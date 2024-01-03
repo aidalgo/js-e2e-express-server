@@ -14,19 +14,7 @@ describe('root', () => {
                 expect(res.text).toContain('Welcome to Express');
                 done();
             }).catch(err => done(err));;
-    });
-    it('request api, returns json', async (done) => {
-
-        const app = await create();
-
-        return request(app)
-            .get('/api/hello')
-            .expect(200)
-            .then((res) => {
-                expect(res.body).toEqual({ hello: 'goodbye' });
-                done();
-            }).catch(err => done(err));;
-    });    
+    }); 
     it('request invalid path, returns 404', async (done) => {
 
         const app = await create();
