@@ -2,6 +2,7 @@ const express = require('express');
 const favicon = require('serve-favicon');
 const path = require('path');
 const utils = require('./utils');
+const requestIp = require('request-ip')
 
 // fn to create express server
 const create = async () => {
@@ -15,7 +16,9 @@ const create = async () => {
 
     // root route - serve static file
     app.get('/api/hello', (req, res) => {
+        var clientIp = requestIp.getClientIp(req)
         res.json({hello: 'goodbye'});
+        res.json({requestIp: '${clientIp}'});
         res.end();
     });
 
