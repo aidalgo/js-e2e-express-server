@@ -17,8 +17,7 @@ const create = async () => {
     // root route - serve static file
     app.get('/api/hello', (req, res) => {
         var clientIp = requestIp.getClientIp(req)
-        res.json({hello: 'goodbye'});
-        res.json({requestIp: '${clientIp}'});
+        res.json({hello: 'goodbye', requestIp: clientIp});
         res.end();
     });
 
